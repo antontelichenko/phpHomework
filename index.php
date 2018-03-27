@@ -10,70 +10,65 @@
 <body>
 <?php
 //первое задание с массивом
-$a=35;
+$valueOfArray=35;
 
-$data = array(1, 1.14, NULL, new stdClass, 'foo', 2, 3, 5, 15, 20, $a);
-function massChange($data=[]){
-//echo "changeOn";
-    $chislo=0;
-    $chislo1=0;
-    foreach ($data as $value) {
+$myArray = array(1, 1.14, NULL, new stdClass, 'foo', 2, 3, 5, 15, 20, $valueOfArray);
+function massChange($myArray=[]){
+    $numberOfFirstForeach=0;
+    $numberOfSecondForeach=0;
+    foreach ($myArray as $value) {
 
         if(gettype($value)!=="integer"){
-            unset($data[$chislo]);
-//            echo "+1";
+            unset($myArray[$numberOfFirstForeach]);
         }
-        $chislo++;
+        $numberOfFirstForeach++;
     }
-    $data = array_values($data);
+    $myArray = array_values($myArray);
 
-    foreach ($data as $key) {
+    foreach ($myArray as $key) {
 
         if ($key%5!==0) {
-            echo $key . "<br/>";
-            unset($data[$chislo1]);
+            unset($myArray[$numberOfSecondForeach]);
         }
-        $chislo1++;
+        $numberOfSecondForeach++;
     }
-    $data = array_values($data);
-    return $data;
+    $myArray = array_values($myArray);
+    return $myArray;
 
 }
 
-$data = massChange($data);
-print_r($data);
+$myArray = massChange($myArray);
+print_r($myArray);
 
 
 //второе задание со строкой
-$str="sadf 0 osfoo sdofosa soos asdofas od fdsaof";
+$myString="sadf 0 osfoo sdofosa soos asdofas od fdsaof";
 
-function ChangeStroka (& $stroka) {
-    $stroka = str_replace(o, 0, $stroka);
-    return $stroka;
+function ChangeStroka (& $string) {
+    $string = str_replace('o', 0, $string);
+    return $string;
 }
 
-ChangeStroka($str);
-echo $str;
+ChangeStroka($myString);
+echo "<br/>" . $myString;
 
 
 //это третье задание с факториалом
-$ChisloForFactorial=5;
-function getFactorial($Chislo) {
-    static $FinalChislo=1;
-    $FinalChislo*=$Chislo;
-//    echo "<br/>";
-//    echo $FinalChislo;
-    if ($Chislo==1)
+$NumberForFactorial=5;
+function getFactorial($Number) {
+    static $FinalNumber=1;
+    $FinalNumber*=$Number;
+    if ($Number==1)
     {
-        echo "<br/>" . $FinalChislo;
+        echo "<br/>" . $FinalNumber;
 
     }
     else {
-        getFactorial($Chislo-1);
+        getFactorial($Number-1);
     }
 }
 
-getFactorial($ChisloForFactorial);
+getFactorial($NumberForFactorial);
 
 ?>
 </body>
